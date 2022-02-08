@@ -7,13 +7,22 @@ sequelize.beforeConnect(async c => {
 
 sequelize.afterConnect(async c => { console.log("afterConnect"); });
 
+const oldAcquire = sequelize.connectionManager.pool.acquire.bind(sequelize.connectionManager.pool);
+
+sequelize.connectionManager.pool.acquire = (async (...args) => {
+  const startTime = process.hrtime.bigint();
+  const result = await oldAcquire(...args);
+  console.log(`acquiring connection took ${process.hrtime.bigint() - startTime} microseconds`);
+  return result;
+});
+
 async function run() {
   try {
     await sequelize.authenticate();
     console.log("Connection has been established successfully.");
-    console.log("1", await sequelize.query("select 1 + 1 as result"));
-    console.log("2", await sequelize.query("select 1 + 1 as result"));
-    console.log("3", await sequelize.query("select 1 + 1 as result"));
+    await sequelize.query("select 1 + 1 as result");
+    await sequelize.query("select 1 + 1 as result");
+    await sequelize.query("select 1 + 1 as result");
   } catch (e) {
     console.error(e);
   }

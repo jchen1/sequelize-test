@@ -1,53 +1,14 @@
-node index.js
 beforeConnect
 afterConnect
 beforeConnect
 afterConnect
+acquiring connection took 9166918 microseconds
 Executing (default): SELECT 1+1 AS result
 Connection has been established successfully.
+acquiring connection took 125947 microseconds
 Executing (default): select 1 + 1 as result
-1 [
-  [ { result: 2 } ],
-  Result {
-    command: 'SELECT',
-    rowCount: 1,
-    oid: null,
-    rows: [ [Object] ],
-    fields: [ [Field] ],
-    _parsers: [ [Function: parser] ],
-    _types: TypeOverrides { _types: [Object], text: {}, binary: {} },
-    RowCtor: null,
-    rowAsArray: false
-  }
-]
+acquiring connection took 44097 microseconds
 Executing (default): select 1 + 1 as result
-2 [
-  [ { result: 2 } ],
-  Result {
-    command: 'SELECT',
-    rowCount: 1,
-    oid: null,
-    rows: [ [Object] ],
-    fields: [ [Field] ],
-    _parsers: [ [Function: parser] ],
-    _types: TypeOverrides { _types: [Object], text: {}, binary: {} },
-    RowCtor: null,
-    rowAsArray: false
-  }
-]
+acquiring connection took 47644 microseconds
 Executing (default): select 1 + 1 as result
-3 [
-  [ { result: 2 } ],
-  Result {
-    command: 'SELECT',
-    rowCount: 1,
-    oid: null,
-    rows: [ [Object] ],
-    fields: [ [Field] ],
-    _parsers: [ [Function: parser] ],
-    _types: TypeOverrides { _types: [Object], text: {}, binary: {} },
-    RowCtor: null,
-    rowAsArray: false
-  }
-]
 undefined
